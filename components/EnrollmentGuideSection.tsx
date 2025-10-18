@@ -19,6 +19,11 @@ const Step: React.FC<StepProps> = ({ icon, title, description }) => (
 );
 
 const EnrollmentGuideSection: React.FC = () => {
+    const handleEnrollClick = () => {
+        // Final attempt to resolve 403 by making the simplest possible call.
+        window.open('https://p.eduzz.com/2091517?a=34958045');
+    };
+
   return (
     <section id="enroll" className="py-20 bg-brand-dark px-4">
       <div className="container mx-auto text-center">
@@ -50,13 +55,11 @@ const EnrollmentGuideSection: React.FC = () => {
           />
         </div>
         <div className="mt-16">
-          <a 
-            href="https://go.hotmart.com/L102484252X"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button 
+            onClick={handleEnrollClick}
             className="bg-brand-green text-white font-bold text-xl py-4 px-10 rounded-lg shadow-lg shadow-brand-green/30 transform hover:scale-105 transition-all duration-300 ease-in-out">
             INSCREVER-SE NO CURSO PRINCIPAL
-          </a>
+          </button>
         </div>
       </div>
     </section>

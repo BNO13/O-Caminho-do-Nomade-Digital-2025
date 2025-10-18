@@ -6,11 +6,13 @@ interface CourseCardProps {
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
-  const handleSaberMaisClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (course.link === '#') {
-      e.preventDefault();
-      document.getElementById('enroll')?.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleScrollClick = () => {
+    document.getElementById('enroll')?.scrollIntoView({ behavior: 'smooth' });
+  };
+  
+  const handleExternalLink = () => {
+    // Final attempt to resolve 403 by making the simplest possible call.
+    window.open(course.link);
   };
 
   return (
@@ -20,18 +22,23 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
           RECOMENDADO
         </div>
       )}
-      <img src={course.imageUrl} alt={course.title} className="w-full h-48 object-cover"/>
+      <img src={course.imageUrl} alt={course.title} className="w-full h-48 object-cover" loading="lazy"/>
       <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-xl font-bold mb-2 text-white">{course.title}</h3>
         <p className="text-gray-400 text-sm flex-grow mb-4">{course.description}</p>
-        <a 
-          href={course.link} 
-          onClick={handleSaberMaisClick}
-          target={course.link !== '#' ? '_blank' : undefined}
-          rel={course.link !== '#' ? 'noopener noreferrer' : undefined}
-          className="mt-auto block w-full text-center bg-brand-green text-white font-semibold py-2 px-4 rounded-md hover:bg-opacity-80 transition-colors duration-300">
-          Saber Mais
-        </a>
+        {course.link === '#' ? (
+          <button 
+            onClick={handleScrollClick}
+            className="mt-auto block w-full text-center bg-brand-green text-white font-semibold py-2 px-4 rounded-md hover:bg-opacity-80 transition-colors duration-300">
+            Saber Mais
+          </button>
+        ) : (
+          <button 
+            onClick={handleExternalLink}
+            className="mt-auto block w-full text-center bg-brand-green text-white font-semibold py-2 px-4 rounded-md hover:bg-opacity-80 transition-colors duration-300">
+            Saber Mais
+          </button>
+        )}
       </div>
     </div>
   );

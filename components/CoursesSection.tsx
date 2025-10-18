@@ -9,7 +9,7 @@ const coursesData: Course[] = [
     title: 'Viver Digitalmente: O Passaporte Europeu',
     description: 'O guia completo para construir sua carreira home office na Europa, do zero à primeira vaga. Aprenda a se destacar e conquistar as melhores oportunidades.',
     imageUrl: 'https://picsum.photos/seed/digitalnomad/400/300',
-    link: 'https://go.hotmart.com/L102484252X',
+    link: 'https://p.eduzz.com/2091517?a=34958045',
     isFeatured: true,
   },
   {
